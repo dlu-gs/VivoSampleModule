@@ -1,0 +1,16 @@
+{
+    "name": "vivoportal/vivo-sample-module",
+    "version": "0.1",
+    "description": "Vivo 2 sample module demonstrating Vivo module capabilities and features",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "cms",
+        "zf2",
+        "vivo module",
+        "vivo 2"
+    ],
+    "homepage": "http://vivoportal.org/",
+
+    "require": {
+    }
+}
