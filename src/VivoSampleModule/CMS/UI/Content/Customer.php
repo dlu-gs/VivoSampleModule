@@ -1,7 +1,7 @@
 <?php
 namespace VivoSampleModule\CMS\UI\Content;
 
-use VmTest\Form\Customer as CustomerForm;
+use VivoSampleModule\Form\Customer as CustomerForm;
 
 use Vivo\CMS\UI\AbstractForm;
 

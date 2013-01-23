@@ -12,7 +12,7 @@ $this->headScript()->appendFile('/.VivoSampleModule.resource/js/ajax-validation.
 <h3>Customer UI component</h3>
 
 <?php
-    /** @var $form \VmTest\Form\Customer */
+    /** @var $form \VivoSampleModule\Form\Customer */
     if ($form->getMessages()) {
         echo '<p>' . $this->escapeHtml($this->translate('Invalid input provided')) . '</p>';
     }
