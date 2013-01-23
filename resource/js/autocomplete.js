@@ -1,6 +1,6 @@
 $(function() {
     $( "#street" ).autocomplete({
-        source: "/cs/customer/?controller=CMSFront&act=root-%3Emain-%3Emain-%3Eparam-%3Eparam-%3Eautocomplete",
+        source: "/cs/customer/?&act=root-%3Emain-%3Emain-%3Eparam-%3Eparam-%3Eautocomplete",
         minLength: 2
 //        select: function( event, ui ) {
 //            log( ui.item ?
