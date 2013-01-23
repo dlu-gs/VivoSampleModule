@@ -1,0 +1,46 @@
+<?
+// example how to add css and js from template
+$this->headLink()->appendStylesheet('/.VivoSampleModule.resource/css/smoothness/jquery-ui-1.9.2.custom.css');
+$this->headLink()->appendStylesheet('/.VivoSampleModule.resource/css/ajax-loading.css');
+$this->headScript()->appendFile('/.VivoSampleModule.resource/js/jquery-1.8.3.js');
+$this->headScript()->appendFile('/.VivoSampleModule.resource/js/jquery-ui-1.9.2.custom.js');
+$this->headScript()->appendFile('/.VivoSampleModule.resource/js/autocomplete.js');
+$this->headScript()->appendFile('/.VivoSampleModule.resource/js/ajax-validation.js');
+?>
+<div class="samplediv">
+
+<h3>Customer UI component</h3>
+
+<?php
+    /** @var $form \VivoSampleModule\Form\Customer */
+    if ($form->getMessages()) {
+        echo '<p>' . $this->escapeHtml($this->translate('Invalid input provided')) . '</p>';
+    }
+    //Add hidden field containing the required action
+    $form->add(array(
+        'name'          => 'act',
+        'attributes'    => array(
+            'type'          => 'hidden',
+            'value'         => $this->action('submit'),
+        ),
+    ));
+
+    $fsCustomer = $form->get('customer');
+    $fsPerson   = $fsCustomer->get('person');
+    $fsAddress  = $fsCustomer->get('address');
+    echo $this->form()->openTag($form);
+?>
+
+<div class="form_element"><?php echo $this->formRow($fsPerson->get('first_name')); ?></div>
+<div class="form_element"><?php echo $this->formRow($fsPerson->get('last_name')); ?></div>
+<div class="form_element"><?php echo $this->formRow($fsPerson->get('degrees')); ?></div>
+<div class="form_element"><?php echo $this->formRow($fsAddress->get('street')); ?></div>
+<div class="form_element"><?php echo $this->formRow($fsAddress->get('town')); ?></div>
+<div class="form_element"><?php echo $this->formRow($fsAddress->get('zip')); ?></div>
+    <span id="validateZip"></span>
+<div class="form_element"><?php echo $this->formRow($form->get('act')); ?></div>
+<div class="form_element"><?php echo $this->formRow($form->get('submit')); ?></div>
+
+<?php echo $this->form()->closeTag(); ?>
+
+</div>
