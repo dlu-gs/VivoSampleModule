@@ -10,8 +10,6 @@ use Zend\Http\PhpEnvironment\Request;
 
 class Customer extends AbstractForm
 {
-    protected $autoPrepareForm  = false;
-
     public function submit()
     {
         $form   = $this->getForm();
