@@ -10,17 +10,10 @@ use Zend\Http\PhpEnvironment\Request;
 
 class Customer extends AbstractForm
 {
-    public function init()
-    {
-        $form   = $this->getForm();
-        //Prepare the form
-        $form->prepare();
-        $this->view->form   = $form;
-    }
+    protected $autoPrepareForm  = false;
 
     public function submit()
     {
-        $this->loadFromRequest();
         $form   = $this->getForm();
         if ($form->isValid()) {
             //Form is valid
