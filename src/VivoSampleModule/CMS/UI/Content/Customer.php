@@ -10,6 +10,19 @@ use Zend\Http\PhpEnvironment\Request;
 
 class Customer extends AbstractForm
 {
+    public function init()
+    {
+        parent::init();
+        $form   = $this->getForm();
+        $date   = new \DateTime();
+        $data   = array(
+            'customer'  => array(
+                'dob'       =>   $date,
+            ),
+        );
+        $form->setData($data);
+    }
+
     public function submit()
     {
         $form   = $this->getForm();

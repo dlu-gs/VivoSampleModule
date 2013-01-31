@@ -38,6 +38,13 @@ $this->headScript()->appendFile('/.VivoSampleModule.resource/js/ajax-validation.
 <div class="form_element"><?php echo $this->formRow($fsAddress->get('town')); ?></div>
 <div class="form_element"><?php echo $this->formRow($fsAddress->get('zip')); ?></div>
     <span id="validateZip"></span>
+
+<?php
+    $dobContent = $this->formRow($fsCustomer->get('dob'));
+?>
+
+<div class="form_element"><?php echo $dobContent; ?></div>
+
 <div class="form_element"><?php echo $this->formRow($form->get('act')); ?></div>
 <div class="form_element"><?php echo $this->formRow($form->get('submit')); ?></div>
 <div class="form_element"><?php echo $this->formRow($form->get('csrf')); ?></div>

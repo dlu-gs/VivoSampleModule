@@ -32,5 +32,17 @@ class Customer extends Fieldset
                 'label'     => 'Address',
             ),
         ));
+
+        //DOB
+        $this->add(array(
+            'type'      => 'Zend\Form\Element\DateTime',
+            'name'      => 'dob',
+            'options'   => array(
+                'label'     => 'Date of birth',
+            ),
+        ));
+        /** @var $dob \Zend\Form\Element\DateTime */
+        $dob    = $this->get('dob');
+        $dob->setFormat('Y');
     }
 }
