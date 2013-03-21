@@ -21,8 +21,7 @@ return array(
         'invokables' => array (
         ),
         'factories' => array (
-            'VivoSampleModule\CMS\UI\Content\Customer'
-                => 'VivoSampleModule\CMS\Service\UI\Content\CustomerFactory',
+            'VivoSampleModule\CMS\UI\Content\Customer'  => 'VivoSampleModule\CMS\Service\UI\Content\CustomerFactory',
         ),
         'aliases' => array(
         ),
