@@ -5,8 +5,24 @@ $this->headLink()->appendStylesheet('/.VivoSampleModule.resource/css/ajax-loadin
 $this->headScript()->appendFile('/.VivoSampleModule.resource/js/jquery-1.8.3.js');
 $this->headScript()->appendFile('/.VivoSampleModule.resource/js/jquery-ui-1.9.2.custom.js');
 $this->headScript()->appendFile('/.VivoSampleModule.resource/js/autocomplete.js');
-$this->headScript()->appendFile('/.VivoSampleModule.resource/js/ajax-validation.js');
-?>
+
+$this->headScript()->appendFile('/.Vivo.resource/js/ajax-validation.js');
+$this->headScript()->captureStart() ?>
+setUpAjaxValidation({
+    elementId:              'zip',
+    valInfoId:              'validateZip\\[a\\]',
+    url:                    '<?php echo $this->document($doc) ?>',
+    applyStatusSelector:    '#validateZip\\[a\\]'
+});
+
+setUpAjaxValidation({
+    elementId:              'customer\\[person\\]\\[last_name\\]',
+    valInfoId:              'testLastName',
+    url:                    '<?php echo $this->document($doc) ?>',
+    applyStatusSelector:    '#cgroup-customer\\[person\\]\\[last_name\\]'
+});
+
+<?php $this->headScript()->captureEnd() ?>
 <div class="samplediv">
 
 <h3>Customer UI component</h3>
@@ -28,27 +44,29 @@ $this->headScript()->appendFile('/.VivoSampleModule.resource/js/ajax-validation.
     $fsCustomer = $form->get('customer');
     $fsPerson   = $fsCustomer->get('person');
     $fsAddress  = $fsCustomer->get('address');
-    echo $this->form()->openTag($form);
+    echo $this->formTwb()->openTag($form);
 ?>
 
-<div class="form_element"><?php echo $this->formRow($fsPerson->get('first_name')); ?></div>
-<div class="form_element"><?php echo $this->formRow($fsPerson->get('last_name')); ?></div>
-<div class="form_element"><?php echo $this->formRow($fsPerson->get('degrees')); ?></div>
-<div class="form_element"><?php echo $this->formRow($fsAddress->get('street')); ?></div>
-<div class="form_element"><?php echo $this->formRow($fsAddress->get('town')); ?></div>
-<div class="form_element"><?php echo $this->formRow($fsAddress->get('zip')); ?></div>
-    <span id="validateZip"></span>
+<div class="form_element"><?php echo $this->formRowTwb($fsPerson->get('first_name')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($fsPerson->get('last_name')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($fsPerson->get('degrees')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($fsAddress->get('street')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($fsAddress->get('town')); ?></div>
+<div class="form_element ajax-val-info-zip"><?php echo $this->formRowTwb($fsAddress->get('zip')); ?></div>
+    <span id="validateZip[a]" class="ajax-val-info-zip"></span>
 
 <?php
-    $dobContent = $this->formRow($fsCustomer->get('dob'));
+    $dobContent = $this->formRowTwb($fsCustomer->get('dob'));
 ?>
 
 <div class="form_element"><?php echo $dobContent; ?></div>
 
-<div class="form_element"><?php echo $this->formRow($form->get('act')); ?></div>
-<div class="form_element"><?php echo $this->formRow($form->get('submit')); ?></div>
-<div class="form_element"><?php echo $this->formRow($form->get('csrf')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($form->get('act')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($form->get('submit')); ?></div>
+<div class="form_element"><?php echo $this->formRowTwb($form->get('csrf')); ?></div>
 
-<?php echo $this->form()->closeTag(); ?>
+<?php echo $this->formTwb()->closeTag(); ?>
 
 </div>
+
+<span id="testLastName"></span>

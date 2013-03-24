@@ -23,6 +23,13 @@ class Customer extends AbstractForm
         $form->setData($data);
     }
 
+    public function view()
+    {
+        $viewModel  = parent::view();
+        $viewModel->doc = $this->document;
+        return $viewModel;
+    }
+
     public function submit()
     {
         $form   = $this->getForm();
@@ -50,25 +57,6 @@ class Customer extends AbstractForm
         $data   = array($term, 'Dlouhá', 'Krátká', 'Široká', 'Úzká');
         $jsonModel  = new \Zend\View\Model\JsonModel();
         $jsonModel->setVariables($data);
-        return $jsonModel;
-    }
-
-    public function checkFormField()
-    {
-        $field      = $this->request->getPost('field');
-        $value      = $this->request->getPost('value');
-        $messages   = array();
-        $jsonModel  = new \Zend\View\Model\JsonModel();
-        $isValid    = $this->isFieldValid($field, $value, $messages);
-        if ($isValid) {
-            //Form field is valid
-            $jsonModel->setVariable('msg', sprintf("Value '%s' for field '%s' is valid", $value, $field));
-        } else {
-            //Form field not valid
-            $messageStr = implode('<br>', $messages);
-            $jsonModel->setVariable('msg', sprintf("Value '%s' for field '%s' is NOT valid!<br>%s",
-                                                   $value, $field, $messageStr));
-        }
         return $jsonModel;
     }
 
